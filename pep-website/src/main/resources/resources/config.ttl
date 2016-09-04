@@ -1,0 +1,41 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdfp: <http://w3id.org/rdfp/>.
+@base <https://w3id.org/pep/>.
+
+<> a rdfp:Graph ; rdfp:fileName "pep-1.0.ttl" ;
+  rdfp:alias <1.0> .
+
+<example> a rdfp:Graph ; rdfp:fileName "example-description.ttl" .
+
+<input/xml/liftingRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "inputGraph-xml-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
+<input/xml/loweringRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "inputGraph-xml-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
+<input/json/liftingRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "inputGraph-json-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
+<input/json/loweringRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "inputGraph-json-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
+
+<output/xml/liftingRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "outputGraph-xml-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
+<output/xml/loweringRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "outputGraph-xml-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
+<output/json/liftingRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "outputGraph-json-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
+<output/json/loweringRule> a rdfp:Resource ; rdfp:presentedBy [ rdfp:fileName "outputGraph-json-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
+
+<input/example> a rdfp:Resource ; 
+  rdfp:presentedBy [ rdfp:fileName "input-example.json" ;  rdfp:mediaType "application/json" ] ;
+  rdfp:presentedBy [ rdfp:fileName "input-example.ttl" ;  rdfp:mediaType "text/turtle" ] ;
+  rdfp:presentedBy [ rdfp:fileName "input-example.xml" ;  rdfp:mediaType "application/xml" ] .
+
+<output/example> a rdfp:Resource ; 
+  rdfp:presentedBy [ rdfp:fileName "output-example.json" ;  rdfp:mediaType "application/json" ] ;
+  rdfp:presentedBy [ rdfp:fileName "output-example.ttl" ;  rdfp:mediaType "text/turtle" ] ;
+  rdfp:presentedBy [ rdfp:fileName "output-example.xml" ;  rdfp:mediaType "application/xml" ] .
