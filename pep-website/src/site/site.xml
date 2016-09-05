@@ -25,8 +25,8 @@ See the License for the specific language governing permissions and
         
         <menu name="Overview">
             <item name="Introduction" href="index.html"/>
-            <item name="The PEP vocabulary (Turtle)" href=".ttl"/>
-            <item name="The PEP vocabulary (RDF/XML)" href=".rdf"/>
+            <item name="The PEP vocabulary (Turtle)" href="index.ttl"/>
+            <item name="The PEP vocabulary (RDF/XML)" href="index.rdf"/>
         </menu>
         <menu name="Demonstration">
             <item name="Example of a Process Execution Container description" href="example"/>

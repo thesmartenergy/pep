@@ -6,6 +6,8 @@ These are called Process Execution Platforms.
 
 There are process execution containers.
 
+Specification and demonstration of Process Execution Platform: A RESTful API to expose process executors that implement processes and generate process executions, whose input and output are RDF graphs.
+
 ## Process Execution Containers description 
 
 Following the Linked Data principles, Process Execution Containers are given URI identifiers, and a RDF description of these resources can be retrieved at their URI.

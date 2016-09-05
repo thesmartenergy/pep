@@ -16,7 +16,7 @@
 @base <https://w3id.org/pep/>.
 
 <> a rdfp:Graph ; rdfp:fileName "pep-1.0.ttl" ;
-  rdfp:alias <1.0> .
+  rdfp:alias <index>, <1.0> .
 
 <example> a rdfp:Graph ; rdfp:fileName "example-description.ttl" .
 
