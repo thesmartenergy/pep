@@ -18,30 +18,22 @@ package com.github.thesmartenergy.pep.website;
 import com.github.thesmartenergy.pep.ContainerPath;
 import com.github.thesmartenergy.pep.PEPException;
 import com.github.thesmartenergy.pep.ProcessExecutorDataset;
-import com.github.thesmartenergy.rdfp.BaseURI;
-import com.github.thesmartenergy.rdfp.DevelopmentBaseURI;
-import java.io.File;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
-import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
-import org.apache.jena.tdb.TDBFactory;
 
 /**
  *
@@ -56,10 +48,7 @@ public class RandomNumberGenerator extends ProcessExecutorDataset {
     private static final Property MIN = ResourceFactory.createProperty(EX + "min");
     private static final Property MAX = ResourceFactory.createProperty(EX + "max");
     private static final Property VALUE = ResourceFactory.createProperty(EX + "value");
-    
-
-    static final boolean DEV = false;
-    
+        
     @Override
     public Future<Model> execute(Model input) throws PEPException {
         

@@ -15,7 +15,6 @@
  */
 package com.github.thesmartenergy.pep.website;
 
-import static com.github.thesmartenergy.pep.website.RandomNumberGenerator.DEV;
 import com.github.thesmartenergy.rdfp.BaseURI;
 import com.github.thesmartenergy.rdfp.DevelopmentBaseURI;
 import java.io.File;
@@ -28,6 +27,8 @@ import org.apache.jena.tdb.TDBFactory;
  * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
  */
 public class App {
+    
+    static final boolean DEV = false;
 
     @Produces
     @BaseURI

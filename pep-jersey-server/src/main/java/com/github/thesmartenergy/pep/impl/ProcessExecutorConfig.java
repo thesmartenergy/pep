@@ -15,6 +15,7 @@
  */
 package com.github.thesmartenergy.pep.impl;
 
+import com.github.thesmartenergy.ontop.jersey.RepresentationsMap;
 import com.github.thesmartenergy.pep.ContainerPath;
 import com.github.thesmartenergy.pep.PEP;
 import com.github.thesmartenergy.pep.PEPException;
@@ -59,12 +60,13 @@ public class ProcessExecutorConfig extends ResourceConfig {
     private static Map<String, ProcessExecutionContainer> processExecutionContainers = new HashMap<>();
 
     public ProcessExecutorConfig() {
-        packages("com.github.thesmartenergy.rdfp");
+        packages(true, "com.github.thesmartenergy.rdfp");
         packages(true, "com.github.thesmartenergy.pep");
     }
 
     @PostConstruct
     private void postConstruct() {
+        System.out.println("constructing process executor config");
         Iterator<ProcessExecutor> it = processExecutors.iterator();
         while (it.hasNext()) {
             final ProcessExecutor processExecutor = it.next();
