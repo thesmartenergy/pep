@@ -34,7 +34,6 @@ pep: a owl:Ontology , voaf:Vocabulary , foaf:Document ;
   dc:title "Process Execution ontology."@en ;
   dc:description """A Process Execution Platform exposes a RESTful API to expose process executors that implement processes and generate process executions, whose input and output are RDF graphs.
 
-
 We propose a REST-compliant way to expose processes whose inputs and outputs are described as RDF graphs.
 
 These are called Process Execution Platforms.
