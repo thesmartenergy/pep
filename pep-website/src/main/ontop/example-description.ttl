@@ -32,7 +32,7 @@
   dc:description """This document describes the random number generator process execution container that is hosted on this website."""@en ;
   dc:issued "2016-09-01"^^xsd:date ;
   dc:modified "2016-09-01"^^xsd:date ;
-  dc:author <http://www.maxime-lefrancois.info/me#> .
+  dc:creator <http://www.maxime-lefrancois.info/me#> .
 
 <RandomNumberGenerator> a pep:ProcessExecutor ;
   rdfs:label "Random Number Generator" ;

@@ -52,7 +52,7 @@ public abstract class ProcessExecutorMap implements ProcessExecutor {
      * {@inheritDoc}
      */
     @Override
-    public void edit(ProcessExecution processExecution) throws PEPException {
+    public void update(ProcessExecution processExecution) throws PEPException {
         String id = processExecution.getId();
         if (!executions.containsKey(id)) {
             throw new PEPException("Process execution with id " + id + " does not exist. Create it first.");

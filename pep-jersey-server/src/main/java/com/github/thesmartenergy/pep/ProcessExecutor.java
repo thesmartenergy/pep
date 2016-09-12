@@ -49,7 +49,7 @@ public interface ProcessExecutor {
      * @param processExecution
      * @throws PEPException if the process execution does not exist.
      */
-    void edit(ProcessExecution processExecution) throws PEPException;
+    void update(ProcessExecution processExecution) throws PEPException;
 
     /**
      * Return a process execution given its identifier.

@@ -84,6 +84,7 @@ public class ProcessExecutionImpl implements ProcessExecution {
         model = ModelFactory.createDefaultModel();
         model.setNsPrefix("", BASE);
         model.setNsPrefix("pep", PEP.NS);
+        model.setNsPrefix("ldp", LDP.NS);
 
         model.add(model.getResource(getResourcePath()),
                 RDF.type,
@@ -91,6 +92,9 @@ public class ProcessExecutionImpl implements ProcessExecution {
         model.add(model.getResource(getResourcePath()),
                 PEP.methodUsed,
                 model.getResource("SmartChargingAlgorithm"));
+        model.add(model.getResource(getContainerPath()),
+                LDP.contains,
+                model.getResource(getResourcePath()));
         model.add(model.getResource(getResourcePath()),
                 PEP.generatedBy,
                 model.getResource("SmartChargingProvider"));

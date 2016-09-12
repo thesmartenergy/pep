@@ -15,19 +15,37 @@
  */
 package com.github.thesmartenergy.pep.website;
 
+import static com.github.thesmartenergy.pep.website.RandomNumberGenerator.DEV;
 import com.github.thesmartenergy.rdfp.BaseURI;
+import com.github.thesmartenergy.rdfp.DevelopmentBaseURI;
+import java.io.File;
 import javax.enterprise.inject.Produces;
+import org.apache.jena.query.Dataset;
+import org.apache.jena.tdb.TDBFactory;
 
 /**
  *
- * @author maxime.lefrancois
+ * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
  */
 public class App {
 
     @Produces
     @BaseURI
-    public String getBase() {
-        return "https://w3id.org/pep/";
-    }
+    static final String BASE = "https://w3id.org/pep/";
 
+    @Produces
+    @DevelopmentBaseURI
+    static final String DEV_BASE = DEV ? "http://localhost:8080/pep/" : BASE;
+
+    private static Dataset DATASET;
+
+    @Produces
+    public Dataset getDataset() {
+        if (DATASET == null) {
+            String loc = "containers";
+            (new File(loc)).mkdir();
+            DATASET = TDBFactory.createDataset(loc);
+        }
+        return DATASET;
+    }
 }

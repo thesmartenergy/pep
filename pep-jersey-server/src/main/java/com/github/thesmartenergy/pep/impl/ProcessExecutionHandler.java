@@ -105,7 +105,10 @@ public class ProcessExecutionHandler {
 
         try {
             URI uri = new URI(BASE + processExecution.getResourcePath());
-            return Response.created(uri).build();
+            return Response.created(uri)
+                    .header("Location-Input", BASE + processExecution.getInputResourcePath())
+                    .header("Location-Output", BASE + processExecution.getOutputResourcePath())
+                    .build();
         } catch (URISyntaxException ex) {
             throw new IllegalArgumentException(ex.getMessage());
         }

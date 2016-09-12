@@ -20,7 +20,7 @@ import com.github.thesmartenergy.pep.PEP;
 import com.github.thesmartenergy.pep.PEPException;
 import com.github.thesmartenergy.pep.ProcessExecutor;
 import com.github.thesmartenergy.rdfp.BaseURI;
-import com.github.thesmartenergy.rdfp.resources.ResourceDescription;
+import com.github.thesmartenergy.rdfp.ResourceDescription;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -36,7 +36,6 @@ import javax.ws.rs.ApplicationPath;
 import org.apache.jena.rdf.model.Model;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.model.Resource;
-import static jersey.repackaged.com.google.common.base.Preconditions.checkNotNull;
 
 /**
  *
@@ -147,6 +146,12 @@ public class ProcessExecutorConfig extends ResourceConfig {
             }
         }
         return null;
+    }
+
+    private void checkNotNull(Object object) {
+        if(object == null) {
+            throw new NullPointerException();
+        }
     }
 
 }

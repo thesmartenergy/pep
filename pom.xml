@@ -8,11 +8,12 @@
        
     <name>Process Execution Platform</name>
     <description>The parent project for PEP - Process Execution Platform, its implementation over Jersey and the demonstration website</description>
-    <url>http://${repository.domain}/${repository.user}/${repository.name}</url>
+    <url>https://w3id.org/pep/</url>
     <inceptionYear>2016</inceptionYear>
 
-    <!-- command to deploy to maven: mvn clean deploy -DperformRelease=true-->
-
+    <!-- command to deploy to maven: -->
+    <!--mvn clean scm:checkin release:prepare release:perform -Dmessage=""-->
+    
     <modules>
         <module>pep-jersey-server</module>
         <module>pep-website</module>
@@ -73,33 +74,22 @@
 
     <properties>
         <websiteName>pep</websiteName>
-        
-        <!-- ========================  -->
-        <!--    GitHub PROPERTIES      -->
-        <!-- ========================  -->
-
-        <github.global.server>github.com</github.global.server>
-
-        <!-- ========================  -->
-        <!--    PROJECT PROPERTIES     -->
-        <!-- ========================  -->
-        
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ssZ</maven.build.timestamp.format>
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>        
         <project.scm.id>git</project.scm.id>
-        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ssZ</maven.build.timestamp.format>
-
-        <!-- ========================  -->
-        <!--    SITE DOC PROPERTIES    -->
-        <!-- ========================  -->
 
         <repository.domain>github.com</repository.domain>
         <repository.user>thesmartenergy</repository.user>
         <repository.name>pep</repository.name>
 
+        <javax.annotation-api.version>1.2</javax.annotation-api.version>
+        <cdi-api.version>1.2</cdi-api.version>
+        <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+        <ontop.version>1.1-SNAPSHOT</ontop.version>
     </properties>
     
     <dependencies>
@@ -148,12 +138,14 @@
                     <configuration>
                         <excludeSubProjects>true</excludeSubProjects>
                         <excludes>
+                            <exclude>**/pom.xml</exclude>
                             <exclude>**/src/site/**/*.*</exclude>
                             <exclude>**/src/main/webapp/**/*.*</exclude>
                             <exclude>**/src/main/resources/**/*.json</exclude>
                             <exclude>**/beans.xml</exclude>
-                            <exclude>**/*.js</exclude>
-                            <exclude>**/*.rqg</exclude>
+                            <exclude>**/src**/*.js</exclude>
+                            <exclude>**/src**/*.rqg</exclude>
+                            <exclude>**/src/**/*.json</exclude>
                             <exclude>**/src/main/**/*.html</exclude>
                             <exclude>**/src/test/**/*.*</exclude>
                             <exclude>**/src/**/package-info.java</exclude>
@@ -180,9 +172,7 @@
                     </configuration>
                 </plugin>
                 
-                <!-- ========================  -->
-                <!--    SITE LIFECYCLE         -->
-                <!-- ========================  -->
+                <!-- used to generate the project descriptors -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
@@ -220,7 +210,6 @@
                     </configuration>        
                 </plugin>
 
-
                 <!-- ========================  -->
                 <!--   ADDITIONNAL PLUGINS     -->
                 <!-- ========================  -->
@@ -249,15 +238,12 @@
                     <configuration>
                         <resume>false</resume>
                         <tagNameFormat>@{project.version}</tagNameFormat>
-                        <releaseProfiles>sign-artifacts</releaseProfiles>
+                        <releaseProfiles>release</releaseProfiles>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
-
-        <!-- actual enabled plugins -->
         <plugins>
-            <!-- validate -->
             <plugin>
                 <groupId>org.apache.rat</groupId>
                 <artifactId>apache-rat-plugin</artifactId>
@@ -274,9 +260,39 @@
         <!--  ENABLED DURING RELEASE   -->
         <!-- ========================  -->
         <profile>
-            <id>sign-artifacts</id>
+            <id>release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.3</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
