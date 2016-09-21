@@ -81,7 +81,7 @@ This ontology generalizes the core of the SSN ontology (https://www.w3.org/ns/ss
   dc:issued "2016-07-01"^^xsd:date ;
   dc:modified "2016-09-12"^^xsd:date ;
   dc:creator <http://www.maxime-lefrancois.info/me#> ;
-  cc:license <http://creativecommons.org/licenses/by/4.0/> ;
+  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   vann:preferredNamespacePrefix "pep" ;
   vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
   owl:versionIRI <pep-1.0> ;

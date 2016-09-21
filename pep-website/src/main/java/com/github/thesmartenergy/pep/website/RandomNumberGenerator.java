@@ -17,6 +17,7 @@ package com.github.thesmartenergy.pep.website;
 
 import com.github.thesmartenergy.pep.ContainerPath;
 import com.github.thesmartenergy.pep.PEPException;
+import com.github.thesmartenergy.pep.ProcessExecutor;
 import com.github.thesmartenergy.pep.ProcessExecutorDataset;
 import java.util.HashSet;
 import java.util.Random;
@@ -40,7 +41,7 @@ import org.apache.jena.rdf.model.ResourceFactory;
  * @author maxime.lefrancois
  */
 @ContainerPath("RandomNumberGeneration")
-public class RandomNumberGenerator extends ProcessExecutorDataset {
+public class RandomNumberGenerator extends ProcessExecutorDataset implements ProcessExecutor {
     
     private static final Logger LOG = Logger.getLogger(RandomNumberGenerator.class.getSimpleName());
 

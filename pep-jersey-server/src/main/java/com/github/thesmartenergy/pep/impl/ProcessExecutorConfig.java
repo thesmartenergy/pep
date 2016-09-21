@@ -66,15 +66,18 @@ public class ProcessExecutorConfig extends ResourceConfig {
 
     @PostConstruct
     private void postConstruct() {
-        System.out.println("constructing process executor config");
+        LOG.info("constructing process executor config with base " + BASE);
         Iterator<ProcessExecutor> it = processExecutors.iterator();
         while (it.hasNext()) {
             final ProcessExecutor processExecutor = it.next();
+            LOG.info("constructing process executor " + processExecutor);
             final ContainerPath container = processExecutor.getClass().getAnnotation(ContainerPath.class);
             if (container == null) {
+                LOG.warning("processExecutor has no containerPath annotation. Continuing.");
                 continue;
             }
             String resourcePath = container.value();
+            LOG.warning("process executor is located at " + resourcePath);
             try {
                 registerProcessExecutor(processExecutor, resourcePath);
             } catch (PEPException ex) {
@@ -87,6 +90,7 @@ public class ProcessExecutorConfig extends ResourceConfig {
         checkNotNull(processExecutor);
         checkNotNull(containerPath);
         String uri = BASE + containerPath;
+        LOG.warning("registering process executor at path" + uri);
         ResourceDescription pec;
         try {
             pec = new ResourceDescription(uri);
@@ -101,7 +105,7 @@ public class ProcessExecutorConfig extends ResourceConfig {
             inputGraphURI = pecModel.getProperty(process, PEP.hasInput).getObject().asResource().getURI();
             outputGraphURI = pecModel.getProperty(process, PEP.hasOutput).getObject().asResource().getURI();
         } catch (Exception ex) {
-            throw new PEPException("Error while retrievign the input and output graph description URIs. Check the conformance with the vocabulary (and the conformance of this implementation).");
+            throw new PEPException("Error while retrieving the input and output graph description URIs. Check the conformance with the vocabulary (and the conformance of this implementation).");
         }
         checkNotNull(inputGraphURI);
         checkNotNull(outputGraphURI);
