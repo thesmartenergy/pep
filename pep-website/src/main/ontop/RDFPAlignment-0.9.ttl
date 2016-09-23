@@ -1,0 +1,145 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix rdfp: <https://w3id.org/rdfp/>.
+
+@prefix pep: <https://w3id.org/pep/>.
+@base <https://w3id.org/pep/>.
+
+pep:RDFPAlignment a owl:Ontology , voaf:Vocabulary , foaf:Document ;
+  dc:title "PEP-RDFP Alignemnts"@en ;
+  dc:description """This ontology augments the Process Execution Platform ontology with the describe OF inputs and outputs as RDF Graphs.
+
+Figure below is a precised overview of the PEP Ontology with RDFP concepts. 
+
+[![Overview of the PEP Ontology with RDFP concepts](https://w3id.org/pep/pep-rdfp.png)](https://w3id.org/pep/pep-rdfp.png).
+
+This ontology is the basis for:
+
+- the [Process Execution Platform specification](https://w3id.org/pep/platform.html);
+- its [binding to HTTP](https://w3id.org/pep/http.html);
+- its [implementation on top of Jersey](https://w3id.org/pep/get-started.html);
+- the [demonstration an HTTP process executor on this process executor website](https://w3id.org/pep/example).
+
+
+A process links to the description of the RDF graph it expects as input, and to the description of the graph it outputs. For example, the following RDF graph describes a process where:
+
+- the topic of the input graph is a car;
+- the topic of the output is the speed of that same car, which is forecasted.
+
+```
+@prefix pep: <https://w3id.org/pep/> .
+@prefix rdfp: <https://w3id.org/rdfp/> .
+@prefix seas: <https://w3id.org/seas/> .
+
+<process> a pep:Process ;
+  pep:hasInput [ a rdfp:GraphDescription ;
+    foaf:topic _:car ] ;
+  pep:hasOutput [ a rdfp:GraphDescription ;
+    foaf:topic _:evaluation ] .
+
+_:car <speed> [ seas:evaluation _:evaluation ] .
+
+_:evaluation a seas:Forecast .
+```
+
+A process executor may link to the description of the RDF graph it expects as input, and to the description of the graph it outputs. These descriptions factorize and extend those of all the processes it implements. For example, the following RDF graph describes a process executor where:
+
+- the topic of the input graph is a specific car;
+- the topic of the output is the speed of that same car.
+
+```
+@prefix pep: <https://w3id.org/pep/> .
+@prefix rdfp: <https://w3id.org/rdfp/> .
+@prefix seas: <https://w3id.org/seas/> .
+
+<speedSensor> a pep:ProcessExecutor ;
+  pep:hasInput [ a rdfp:GraphDescription ;
+    foaf:topic _:car ] ;
+  pep:hasOutput [ a rdfp:GraphDescription ;
+    foaf:topic _:evaluation ] .
+
+_:car <speed> [ seas:evaluation _:evaluation ] .
+
+_:evaluation a seas:Forecast .
+```
+
+A process execution may link to the names of RDF graphs that represent the input, and the output. For example, the following RDF graph describes a process execution:
+
+```
+@prefix pep: <https://w3id.org/pep/> .
+
+<exec> a pep:ProcessExecution ;
+  pep:hasInput <exec/input> ;
+  pep:hasOutput <exec/output> .
+```
+
+Then the graph with name <exec/input> contains: 
+
+```
+@prefix pep:  <https://w3id.org/pep/>.
+@prefix seas: <https://w3id.org/seas/>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#>.
+
+<car/1> <speed> <car/1/speed> .
+<car/1/speed> seas:evaluation <evaluation> .
+<evaluation> pep:hasTemporalContext [ time:inXSDDateTime "2016-07-22T12:05:43Z"^^xsd:dateTime ] .
+```
+
+And the graph with name <exec/output> contains: 
+
+```
+@prefix pep:  <https://w3id.org/pep/>.
+@prefix seas: <https://w3id.org/seas/>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#>.
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#>.
+
+<car/1> <speed> <car/1/speed> .
+<car/1/speed> pep:evaluation <evaluation> .
+<evaluation> a seas:Forecast ;
+  pep:evaluatedValue "73 km/h"^^cdt:ucum ; 
+  pep:hasTemporalContext [ time:inXSDDateTime "2016-07-22T12:05:43Z"^^xsd:dateTime ] .
+```
+"""@en ;
+  dc:issued "2016-09-23"^^xsd:date ;
+  dc:modified "2016-09-23"^^xsd:date ;
+  dc:creator <http://www.maxime-lefrancois.info/me#> ;
+  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+  vann:preferredNamespacePrefix "pep" ;
+  vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
+  owl:imports pep: , rdfp: ;
+  owl:versionIRI <RDFPAlignment-0.9> ;
+  owl:versionInfo "v0.9" .
+
+pep:Process rdfs:subClassOf [ owl:onProperty pep:hasInput ; owl:allValuesFrom rdfp:GraphDescription ] ;
+  rdfs:subClassOf [ owl:onProperty pep:hasOutput ; owl:allValuesFrom rdfp:GraphDescription ] .
+
+pep:ProcessExecutor rdfs:subClassOf [ owl:onProperty pep:hasInput ; owl:allValuesFrom rdfp:GraphDescription ] ;
+  rdfs:subClassOf [ owl:onProperty pep:hasOutput ; owl:allValuesFrom rdfp:GraphDescription ] .
+
+pep:ProcessExecution rdfs:subClassOf [ owl:onProperty pep:hasInput ; owl:allValuesFrom rdfp:Graph ] ;
+  rdfs:subClassOf [ owl:onProperty pep:hasOutput ; owl:allValuesFrom rdfp:Graph ] .
+
