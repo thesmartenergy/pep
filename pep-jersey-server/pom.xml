@@ -55,10 +55,15 @@
             <artifactId>jena-tdb</artifactId>
             <version>${jena.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.jsonld-java</groupId>
+            <artifactId>jsonld-java</artifactId>
+            <version>0.3</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>ontop-core-${project.version}</finalName>
+        <finalName>pep-jersey-server-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

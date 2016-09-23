@@ -1,10 +1,5 @@
 # Process Execution Platform
 
-This project describes a REST-compliant way to expose processes whose inputs and outputs are described as RDF graphs, and an extension of Jersey server to ease the development of Process Execution Platforms.
-
-
-## What this project contains
-
 This project contains the sources for the Process Execution Platform project:
 
 `pep-website` contains the sources of the project website at https://w3id.org/pep/

@@ -12,50 +12,48 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
-@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
-@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
-@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
-@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
-@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix gr: <http://purl.org/goodrelations/v1#>.
+@prefix cc: <http://creativecommons.org/ns#>.
 @prefix ssn: <https://www.w3.org/ns/ssn/>.
 
+@prefix pep: <https://w3id.org/pep/>.
+@base <https://w3id.org/pep/>.
 
-@prefix seas: <https://w3id.org/seas/>.
-@base <https://w3id.org/seas/>.
-
-
-#Core roles and activities (for devices and systems), this is related to actor module and could specialize it but now here defined as new vocabulary
-seas:SSNAlignment a owl:Ontology , voaf:Vocabulary ;
-  dc:title "SEAS-SSNAlignmentOntology ontology"@en ;
-  dc:description "The SSN alignment defines alignments between the ."@en ;
+pep:SSNAlignment a owl:Ontology , voaf:Vocabulary , foaf:Document ;
+  dc:title "PEP-SSN Alignments"@en ;
+  dc:description "The SSN alignment proposes alignments between the PEP ontology and the SSN ontology."@en ;
   dc:issued "2016-08-26"^^xsd:date ;
-  dc:modified "2016-09-05"^^xsd:date ;
+  dc:modified "2016-09-22"^^xsd:date ;
   dc:creator <http://www.maxime-lefrancois.info/me#> ;
-  vann:preferredNamespacePrefix "seas" ;
-  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
-  owl:versionIRI <https://w3id.org/seas/SSNAlignment/0.9> ;
+  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+  vann:preferredNamespacePrefix "pep" ;
+  vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
+  owl:imports pep:, ssn: ;
+  owl:versionIRI <SSNAlignment-0.9> ;
   owl:versionInfo "v0.9" .
-# alignment to SSN
 
-seas:Process rdfs:subClassOf ssn:Process .
+pep:Process rdfs:subClassOf ssn:Process .
 
-ssn:Sensor rdfs:subClassOf seas:ProcessExecutor .
+ssn:Sensor rdfs:subClassOf pep:ProcessExecutor .
 
-ssn:Observation rdfs:subClassOf seas:ProcessExecution .
+ssn:Observation rdfs:subClassOf pep:ProcessExecution .
 
-seas:hasInput rdfs:subPropertyOf ssn:hasInput .
+pep:hasInput rdfs:subPropertyOf ssn:hasInput .
 ssn:hasInput a owl:ObjectProperty .
 
-seas:hasOutput rdfs:subPropertyOf ssn:hasOutput .
+pep:hasOutput rdfs:subPropertyOf ssn:hasOutput .
 ssn:hasOutput a owl:ObjectProperty .
 
-ssn:implements rdfs:subPropertyOf seas:implements .
+ssn:implements rdfs:subPropertyOf pep:implements .
 
-ssn:observedBy rdfs:subPropertyOf seas:executedBy .
+ssn:observedBy rdfs:subPropertyOf pep:executedBy .
 
-ssn:sensingMethodUsed rdfs:subPropertyOf seas:methodUsed .
+ssn:sensingMethodUsed rdfs:subPropertyOf pep:methodUsed .

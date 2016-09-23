@@ -24,17 +24,13 @@ See the License for the specific language governing permissions and
     <body>
         
         <menu name="Overview">
-            <item name="Introduction" href="index.html"/>
-            <item name="The PEP vocabulary (Turtle)" href="index.ttl"/>
-            <item name="The PEP vocabulary (RDF/XML)" href="index.rdf"/>
+            <item name="Vocabulary" href="index"/>
+            <item name="Specification" href="platform.html"/>
+            <item name="Demonstration" href="example.html"/>
         </menu>
-        <menu name="Demonstration">
-            <item name="Example of a Process Execution Container description" href="example"/>
-            <item name="Demonstration of a Process Execution Container" href="example.html"/>
-        </menu>
-        <menu name="Implementation over Jersey">
-            <item name="Java library" href="get-started.html"/>
-            <item name="Documentation" href="apidocs/index.html"/>        
+        <menu name="Implementation">
+            <item name="Get Started" href="get-started.html"/>
+            <item name="API Documentation" href="apidocs/index.html"/>        
         </menu>
         <menu ref="reports" inherit="top"/>
     </body>
@@ -50,7 +46,7 @@ See the License for the specific language governing permissions and
                 <sitesearch>${project.url}</sitesearch>
             </googleSearch>
             <gitHub>
-                <projectId>thesmartenergy/rdfp</projectId>
+                <projectId>thesmartenergy/pep</projectId>
                 <ribbonOrientation>right</ribbonOrientation>
                 <ribbonColor>green</ribbonColor>
             </gitHub>

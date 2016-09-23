@@ -18,6 +18,10 @@
 
 <> a ontop:Ontology ; ontop:filePath "pep-1.0.ttl" .
 
+<> a ontop:Ontology ; ontop:filePath "RDFPAlignment-0.9.ttl" .
+
+<> a ontop:Ontology ; ontop:filePath "SSNAlignment-0.9.ttl" .
+
 <example> a rdfp:Graph ; ontop:filePath "example-description.ttl" .
 
 <input/xml/liftingRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "inputGraph-xml-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .

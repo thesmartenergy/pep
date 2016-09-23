@@ -1,6 +1,7 @@
 # Get Started
 
-`pep-jersey-server` eases the development of Web applications that expose Process Execution Containers. 
+`pep-jersey-server` eases the development of [Process Execution Platforms](platform.html). 
+
 All the developper has to do is develop a class that extends `ProcessExecutor` and is annotated with `@ContainerPath`:
 
 ```java
@@ -18,9 +19,14 @@ public class RandomNumberGenerator implements ProcessExecutor {
 }
 ```
 
+Two utility abstract classes further ease the implementation of the `ProcessExecutor` interface:
+
+- `ProcessExecutorMap` stores process executions in a HashMap
+- `ProcessExecutorDataset` stores process executions in a Dataset.
+
 ## Maven project
 
-Binaries, sources and documentation for `pep-jersey-server` are available for download at [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cpep-jersey%22). To use it in your Maven project, add the following dependency declaration to your Maven project file ( `*.pom` file):
+Binaries, sources and documentation for `pep-jersey-server` (will be) are available for download at [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cpep-jersey%22). To use it in your Maven project, add the following dependency declaration to your Maven project file ( `*.pom` file):
  
 ```xml
 <dependency>
