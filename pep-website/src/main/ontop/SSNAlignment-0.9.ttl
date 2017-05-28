@@ -46,6 +46,8 @@ ssn:Sensor rdfs:subClassOf pep:ProcessExecutor .
 
 ssn:Observation rdfs:subClassOf pep:ProcessExecution .
 
+pep:ProcessExecutor rdfs:subClassOf ssn:FeatureOfInterest .
+
 pep:hasInput rdfs:subPropertyOf ssn:hasInput .
 ssn:hasInput a owl:ObjectProperty .
 

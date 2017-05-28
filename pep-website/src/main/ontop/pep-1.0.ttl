@@ -97,7 +97,6 @@ Links to ProcessExecution describe the Executions made.
 Links to Processes define how the executor can make Executions (it may implement several Processes). A Process Executor implements each of the methods used by the Executions it made. 
 
 Other metadata may detail geolocation, vendor, operator, consumed power, etc."""@en ;
-  rdfs:subClassOf ssn:FeatureOfInterest ;
   owl:disjointWith pep:Process ;
   vs:term_status "stable" ;
   rdfs:isDefinedBy pep: .
@@ -116,7 +115,7 @@ pep:implements a owl:ObjectProperty ;
 
 # process execution container
 
-pep:ProcessExecutionContainer a owl:ObjectProperty ;
+pep:ProcessExecutionContainer a owl:Class ;
   rdfs:label "Process Execution Container" ;
   rdfs:comment """The class of Process Executor Containers. They are Web container of Process Execution ressources, where one may operate HTTP POST requests to execute a given process."""@en ;
   vs:term_status "stable" ;
