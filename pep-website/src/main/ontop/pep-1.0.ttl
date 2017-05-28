@@ -54,8 +54,8 @@ Figure below overviews the PEP ontology, and illustrates it with an example.
 
 Additional documents describe alignments with other existing ontologies:
 
-- [the Semantic Sensor Network ontology](https://w3id.org/pep/SSNAlignment);
-- [the RDF Presentation ontology](https://w3id.org/pep/RDFPAlignment).
+- [the Semantic Sensor Network ontology](https://w3id.org/pep/SSNAlignment-0.9);
+- [the RDF Presentation ontology](https://w3id.org/pep/RDFPAlignment-0.9).
 
 ## Process Execution Platform
 
