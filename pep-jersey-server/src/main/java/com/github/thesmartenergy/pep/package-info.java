@@ -16,7 +16,7 @@
 
 /**
  * The main classes and interface needed to implement a web application that
- * exposes Process Execution Containers.
+ * exposes Procedure Execution Containers.
  *
  * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
  */

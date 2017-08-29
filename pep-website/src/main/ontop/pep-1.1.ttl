@@ -16,12 +16,11 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix cc: <http://creativecommons.org/ns#>.
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix rdfp: <https://w3id.org/rdfp/>.
@@ -31,41 +30,29 @@
 @base <https://w3id.org/pep/>.
 
 pep: a owl:Ontology , voaf:Vocabulary , foaf:Document ;
-  dc:title "Procedure Execution ontology."@en ;
-  dc:description """The procedure execution ontology is a simple extension of the [Semantic Sensor Network (SSN) Ontology](https://www.w3.org/TR/vocab-ssn/) and its core, called [Sensor, Observation, Sample, and Actuator (SOSA)](https://www.w3.org/TR/vocab-ssn/). 
+  dcterms:title "Procedure Execution ontology."@en ;
+  dcterms:description """
 
-SOSA describe `sosa:Sensor`s that implement `sosa:Procedure`s methods and make `sosa:Observation`s, which are activities.
-
-In parallel to this, it describes `sosa:Actuator`s that implement `sosa:Procedure`s methods and make `sosa:Actuation`s, which are activities.
-
-In this ontology, we want to generalize these two parallel conceptual models, and account for at least one third use case: *Web services exposed on the web may be called to trigger the execution of some procedures*. 
-
-We hence propose the following core concepts for the Procedure Execution ontology:
-
-> `pep:ProcedureExecutor`s implement `pep:Procedure` methods, and generate `pep:ProcedureExecution`s activities.
-
-_Note: we call for comments and suggestions about the naming of these concepts [in this project open issue](https://github.com/thesmartenergy/pep/issues/1)_
-
-Procedures in SSN may be linked to some description of the inputs and outputs. This is represented using properties `pep:hasInput` and `pep:hasOutput`. Then, their executions may be linked to some description of the result. We add the possiblity to link them to some description of the command. This is represented using properties `pep:hasResult`, `pep:hasSimpleResult`, `pep:hasCommand`, and `pep:hasSimpleCommand`.
-
-Figure below overviews the PEP ontology, and illustrates it with an example.
+The Procedure Execution ontology (PEP) defines `pep:ProcedureExecutor`s that implement `pep:Procedure` methods, and generate `pep:ProcedureExecution` activities. Procedures may be linked to some description of the input and/or the output using object properties `pep:hasInput` and `pep:hasOutput`. Their executions may be linked to some description of the command and/or the result using object properties `pep:hasResult` and `pep:hasCommand`. If the command or the result are simple RDF literals (a typed UNICODE string), then one may use datatype properties `pep:hasSimpleResult` and `pep:hasSimpleCommand` instead. Procedure executions made by a specific procedure executor using a specific procedure can be grouped in containers. Figure below overviews the PEP ontology, and illustrates it with an example.
 
 [![Overview of the PEP Ontology](https://w3id.org/pep/pep-1.1.png)](https://w3id.org/pep/pep-1.1.png).
 
-Additional documents describe alignments with other existing ontologies:
+## PEP generalizes the core concepts of SOSA/SSN
 
-- [the Semantic Sensor Network ontology](https://w3id.org/pep/SSNAlignment-1.1);
-- [the RDF Presentation ontology](https://w3id.org/pep/RDFPAlignment-1.1).
+The procedure execution ontology is a simple extension of the [Semantic Sensor Network (SSN) Ontology](https://www.w3.org/TR/vocab-ssn/) and its core, called [Sensor, Observation, Sample, and Actuator (SOSA)](https://www.w3.org/TR/vocab-ssn/). SOSA describe `sosa:Sensor`s that implement `sosa:Procedure`s and make `sosa:Observation`s, which are activities. In parallel to this, it describes `sosa:Actuator`s that implement `sosa:Procedure`s and make `sosa:Actuation`s. The Procedure Execution ontology defines an ontology pattern as a generalization of these two parallel conceptual models, which accounts for at least one third use case: *Web services exposed on the web may be called to trigger the execution of some procedures*.  SOSA/SSN defines input, output, results, and PEP introduces the command. 
 
-## Procedure Execution Platform
+We provide an external document to  align with the [the Semantic Sensor Network ontology](https://w3id.org/pep/SSNAlignment-1.1).
 
-[Procedure execution platforms](https://w3id.org/pep/platform.html) expose procedure executors on the Web in a RESTful way.
+## PEP to describe Web services that call lengthy algorithms
 
+PEP can be used to describe [Web containers of Web service executions](http://ci.emse.fr/pep-platform/) one can call in a RESTful way, and that consume and produce documents with a RDF data model. A set of such containers are referred  to as a **Process Execution Platform**. 
+
+We provide an external document to align PEP with the [the RDF Presentation ontology](https://w3id.org/pep/RDFPAlignment-1.1). This  alignment encourages to describe the input and output of Web services using `rdfp:GraphDescription`, and the command and result of their execution using URIs to `rdfp:RDFSource`s.
 """@en ;
-  dc:issued "2016-07-01"^^xsd:date ;
-  dc:modified "2016-05-28"^^xsd:date ;
-  dc:creator <http://www.maxime-lefrancois.info/me#> ;
-  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+  dcterms:issued "2016-07-01"^^xsd:date ;
+  dcterms:modified "2016-05-28"^^xsd:date ;
+  dcterms:creator <http://www.maxime-lefrancois.info/me#> ;
+  dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   vann:preferredNamespacePrefix "pep" ;
   vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
   owl:versionIRI <pep-1.1> ;

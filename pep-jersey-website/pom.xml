@@ -6,18 +6,18 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>pep-website</artifactId>
+    <artifactId>pep-jersey-website</artifactId>
     <packaging>war</packaging>
 
-    <name>Procedure Execution Platform ontology website</name>
-    <description>The website that exposes the Procedure Execution Platform ontology.</description>
-    <url>https://w3id.org/pep/</url>
+    <name>Procedure Execution Platforms - website</name>
+    <description>The documentation and demonstration website of Procedure Execution Platforms, and their implementation over Java Jersey.</description>
+    <url>https://ci.mines-stetienne.fr/pep-platform/</url>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-
-        <websiteName>pep</websiteName>
         <ontop.version>1.2-SNAPSHOT</ontop.version>
+        <pep-jersey.version>1.0-SNAPSHOT</pep-jersey.version>
+        <websiteName>pep-platform</websiteName>
     </properties>
     
     <dependencyManagement>
@@ -76,8 +76,8 @@
 
         <dependency>
             <groupId>com.github.thesmartenergy</groupId>
-            <artifactId>ontop-jersey</artifactId>
-            <version>${ontop.version}</version>
+            <artifactId>pep-jersey-server</artifactId>
+            <version>${pep-jersey.version}</version>
         </dependency>
     </dependencies>
 
@@ -143,7 +143,7 @@
                     <executions>
                         <execution>
                             <id>copy-apidocs</id>
-                            <phase>procedure-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>copy-resources</goal>
                             </goals>
@@ -166,7 +166,7 @@
                     <executions>
                         <execution>
                             <id>copy-jar</id>
-                            <phase>procedure-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>copy</goal>
                             </goals>
@@ -177,7 +177,7 @@
                         </execution>
                         <execution>
                             <id>copy-site-project-summary</id>
-                            <phase>procedure-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>copy</goal>
                             </goals>
@@ -188,7 +188,7 @@
                         </execution>
                         <execution>
                             <id>copy-site-source-repository</id>
-                            <phase>procedure-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>copy</goal>
                             </goals>
@@ -199,7 +199,7 @@
                         </execution>
                         <execution>
                             <id>copy-site-issue-tracking</id>
-                            <phase>procedure-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>copy</goal>
                             </goals>

@@ -17,10 +17,7 @@ package com.github.thesmartenergy.pep.website;
 
 import com.github.thesmartenergy.rdfp.BaseURI;
 import com.github.thesmartenergy.rdfp.DevelopmentBaseURI;
-import java.io.File;
 import javax.enterprise.inject.Produces;
-import org.apache.jena.query.Dataset;
-import org.apache.jena.tdb.TDBFactory;
 
 /**
  *
@@ -38,15 +35,4 @@ public class App {
     @DevelopmentBaseURI
     static final String DEV_BASE = DEV ? "http://localhost:8080/pep/" : BASE;
 
-    private static Dataset DATASET;
-
-    @Produces
-    public Dataset getDataset() {
-        if (DATASET == null) {
-            String loc = "containers";
-            (new File(loc)).mkdir();
-            DATASET = TDBFactory.createDataset(loc);
-        }
-        return DATASET;
-    }
 }

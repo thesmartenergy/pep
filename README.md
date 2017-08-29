@@ -1,10 +1,12 @@
-# Process Execution Platform
+# Procedure Execution Platform
 
-This project contains the sources for the Process Execution Platform project:
+This project contains the sources for the Procedure Execution Platform project:
 
 `pep-website` contains the sources of the project website at https://w3id.org/pep/
 
-`pep-jersey-server` is an extension of Jersey that eases the development of Process Execution Platforms.
+`pep-jersey-website` contains the sources of the project website at https://ci.mines-stetienne.org/pep-jersey/
+
+`pep-jersey-server` is an extension of Jersey that eases the development of Procedure Execution Platforms.
 
 Binaries, sources and documentation for `pep-jersey-server` are available for download at [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cpep-jersey%22). To use it in your Maven project, add the following dependency declaration to your Maven project file ( `*.pom` file):
  

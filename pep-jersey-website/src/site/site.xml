@@ -30,10 +30,14 @@ See the License for the specific language governing permissions and
       <link rel="stylesheet" type="text/css" href="css/small.css" media="only all and (max-width: 649px)">]]>
         </head>
         
+        
         <menu name="Overview">
-            <item name="Ontology" href="index"/>
-            <item name="Alignment to SSN" href="SSNAlignment"/>
-            <item name="Alignment to RDFP" href="RDFPAlignment"/>
+            <item name="Specification" href="index.html"/>
+            <item name="Demonstration" href="example.html"/>
+        </menu>
+        <menu name="Over Java Jersey">
+            <item name="Get Started" href="get-started.html"/>
+            <item name="API Documentation" href="apidocs/index.html"/>        
         </menu>
         <menu ref="reports" inherit="top"/>
     </body>

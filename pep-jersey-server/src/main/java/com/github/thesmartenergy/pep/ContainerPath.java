@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
 /**
- * Used to qualify a <code>ProcessExecutor</code>, so that the implementation
+ * Used to qualify a <code>ProcedureExecutor</code>, so that the implementation
  * can discover it and build the corresponding resources.
  * 
  * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
@@ -36,7 +36,7 @@ import javax.inject.Qualifier;
 public @interface ContainerPath {
 
     /**
-     * The process execution container URI path.
+     * The procedure execution container URI path.
      *
      * @return
      */

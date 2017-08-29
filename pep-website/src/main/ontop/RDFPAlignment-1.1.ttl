@@ -28,21 +28,21 @@
 
 pep:RDFPAlignment a owl:Ontology , voaf:Vocabulary , foaf:Document ;
   dcterms:title "PEP-RDFP Alignemnts"@en ;
-  dcterms:description """This ontology augments the Process Execution Platform ontology with the describe OF inputs and outputs as RDF Graphs.
+  dcterms:description """This ontology augments the Process Execution Platform ontology with the description of inputs and outputs as RDF Graphs.
 
 Figure below is a precised overview of the PEP Ontology with RDFP concepts. 
 
-[![Overview of the PEP Ontology with RDFP concepts](https://w3id.org/pep/pep-rdfp.png)](https://w3id.org/pep/pep-rdfp.png).
+[![Overview of the PEP Ontology with RDFP concepts](https://w3id.org/pep/pep-rdfp-1.1.png)](https://w3id.org/pep/pep-rdfp-1.1.png).
 
 This ontology is the basis for:
 
-- the [Process Execution Platform specification](https://w3id.org/pep/platform.html);
-- its [binding to HTTP](https://w3id.org/pep/http.html);
-- its [implementation on top of Jersey](https://w3id.org/pep/get-started.html);
-- the [demonstration an HTTP process executor on this process executor website](https://w3id.org/pep/example).
+- the [Process Execution Platform specification](https://w3id.org/pep/platform/);
+- its [binding to HTTP](https://w3id.org/pep/platform/http);
+- its [implementation on top of Jersey](https://w3id.org/pep/platform/get-started.html);
+- the [demonstration of an HTTP procedure executor on this procedure executor website](https://w3id.org/pep/platform/example).
 
 
-A process links to the description of the RDF graph it expects as input, and to the description of the graph it outputs. For example, the following RDF graph describes a process where:
+A procedure links to the description of the RDF graph it expects as input, and to the description of the graph it outputs. For example, the following RDF graph describes a procedure where:
 
 - the topic of the input graph is a car;
 - the topic of the output is the speed of that same car, which is forecasted.
@@ -52,7 +52,7 @@ A process links to the description of the RDF graph it expects as input, and to 
 @prefix rdfp: <https://w3id.org/rdfp/> .
 @prefix seas: <https://w3id.org/seas/> .
 
-<process> a pep:Process ;
+<procedure> a pep:Process ;
   pep:hasInput [ a rdfp:GraphDescription ;
     foaf:topic _:car ] ;
   pep:hasOutput [ a rdfp:GraphDescription ;
@@ -63,38 +63,17 @@ _:car <speed> [ seas:evaluation _:evaluation ] .
 _:evaluation a seas:Forecast .
 ```
 
-A process executor may link to the description of the RDF graph it expects as input, and to the description of the graph it outputs. These descriptions factorize and extend those of all the processes it implements. For example, the following RDF graph describes a process executor where:
-
-- the topic of the input graph is a specific car;
-- the topic of the output is the speed of that same car.
-
-```
-@prefix pep: <https://w3id.org/pep/> .
-@prefix rdfp: <https://w3id.org/rdfp/> .
-@prefix seas: <https://w3id.org/seas/> .
-
-<speedSensor> a pep:ProcessExecutor ;
-  pep:hasInput [ a rdfp:GraphDescription ;
-    foaf:topic _:car ] ;
-  pep:hasOutput [ a rdfp:GraphDescription ;
-    foaf:topic _:evaluation ] .
-
-_:car <speed> [ seas:evaluation _:evaluation ] .
-
-_:evaluation a seas:Forecast .
-```
-
-A process execution may link to the names of RDF graphs that represent the input, and the output. For example, the following RDF graph describes a process execution:
+A procedure execution may link to the names of RDF graphs that represent the command, and the result. For example, the following RDF graph describes a procedure execution:
 
 ```
 @prefix pep: <https://w3id.org/pep/> .
 
 <exec> a pep:ProcessExecution ;
-  pep:hasInput <exec/input> ;
-  pep:hasOutput <exec/output> .
+  pep:hasCommand <exec/command> ;
+  pep:hasResult <exec/result> .
 ```
 
-Then the graph with name <exec/input> contains: 
+Then the graph with name <exec/command> contains: 
 
 ```
 @prefix pep:  <https://w3id.org/pep/>.
@@ -104,10 +83,10 @@ Then the graph with name <exec/input> contains:
 
 <car/1> <speed> <car/1/speed> .
 <car/1/speed> seas:evaluation <evaluation> .
-<evaluation> pep:hasTemporalContext [ time:inXSDDateTime "2016-07-22T12:05:43Z"^^xsd:dateTime ] .
+<evaluation> seas:hasTemporalContext [ time:inXSDDateTime "2016-07-22T12:05:43Z"^^xsd:dateTime ] .
 ```
 
-And the graph with name <exec/output> contains: 
+And the graph with name <exec/result> contains: 
 
 ```
 @prefix pep:  <https://w3id.org/pep/>.
@@ -117,10 +96,10 @@ And the graph with name <exec/output> contains:
 @prefix cdt: <http://w3id.org/lindt/custom_datatypes#>.
 
 <car/1> <speed> <car/1/speed> .
-<car/1/speed> pep:evaluation <evaluation> .
+<car/1/speed> seas:evaluation <evaluation> .
 <evaluation> a seas:Forecast ;
-  pep:evaluatedValue "73 km/h"^^cdt:ucum ; 
-  pep:hasTemporalContext [ time:inXSDDateTime "2016-07-22T12:05:43Z"^^xsd:dateTime ] .
+  seas:evaluatedValue "73 km/h"^^cdt:ucum ; 
+  seas:hasTemporalContext [ time:inXSDDateTime "2016-07-22T12:05:43Z"^^xsd:dateTime ] .
 ```
 """@en ;
   dcterms:issued "2016-09-23"^^xsd:date ;
@@ -130,15 +109,12 @@ And the graph with name <exec/output> contains:
   vann:preferredNamespacePrefix "pep" ;
   vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
   owl:imports pep: , rdfp: ;
-  owl:versionIRI <RDFPAlignment-0.9> ;
-  owl:versionInfo "v0.9" .
+  owl:versionIRI <RDFPAlignment-1.1> ;
+  owl:versionInfo "v1.1" ;
+  owl:priorVersion <RDFPAlignment-0.9> .
 
 pep:Process rdfs:subClassOf [ owl:onProperty pep:hasInput ; owl:allValuesFrom rdfp:GraphDescription ] ;
   rdfs:subClassOf [ owl:onProperty pep:hasOutput ; owl:allValuesFrom rdfp:GraphDescription ] .
 
-pep:ProcessExecutor rdfs:subClassOf [ owl:onProperty pep:hasInput ; owl:allValuesFrom rdfp:GraphDescription ] ;
-  rdfs:subClassOf [ owl:onProperty pep:hasOutput ; owl:allValuesFrom rdfp:GraphDescription ] .
-
-pep:ProcessExecution rdfs:subClassOf [ owl:onProperty pep:hasInput ; owl:allValuesFrom rdfp:Graph ] ;
-  rdfs:subClassOf [ owl:onProperty pep:hasOutput ; owl:allValuesFrom rdfp:Graph ] .
-
+pep:ProcessExecution rdfs:subClassOf [ owl:onProperty pep:hasCommand ; owl:allValuesFrom rdfp:Graph ] ;
+  rdfs:subClassOf [ owl:onProperty pep:hasResult ; owl:allValuesFrom rdfp:Graph ] .

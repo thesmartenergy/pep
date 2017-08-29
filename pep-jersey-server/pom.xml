@@ -10,13 +10,15 @@
     <artifactId>pep-jersey-server</artifactId>
     <packaging>jar</packaging>
 
-    <name>Process Execution Platform over Jersey server</name>
-    <description>An implementation of PEP - Process Execution Platform over Jersey</description>
-    <url>https://w3id.org/pep/</url>
+    <name>Procedure Execution Platform over Jersey server</name>
+    <description>An implementation of PEP - Procedure Execution Platform over Jersey</description>
+    <url>https://ci.mines-stetienne.fr/pep-platform/</url>
 
     <properties>
         <jersey.version>2.22</jersey.version>
         <jena.version>3.0.1</jena.version><!-- do not use version 3.1.0: error java.lang.NoSuchMethodError: org.apache.jena.sparql.core.assembler.AssemblerUtils.registerDataset(Lorg/apache/jena/rdf/model/Resource;Lorg/apache/jena/assembler/Assembler;) -->
+        <ontop.version>1.2-SNAPSHOT</ontop.version>
+        <rdfp.version>1.2.3-SNAPSHOT</rdfp.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,11 @@
             <groupId>com.github.thesmartenergy</groupId>
             <artifactId>ontop-jersey</artifactId>
             <version>${ontop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.thesmartenergy</groupId>
+            <artifactId>rdfp-jersey-server</artifactId>
+            <version>${rdfp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>

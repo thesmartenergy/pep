@@ -1,0 +1,105 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl:  <http://www.w3.org/2002/07/owl#>.
+@prefix pep: <https://w3id.org/seas/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix rdfp: <https://w3id.org/rdfp/>.
+@prefix sosa: <http://www.w3.org/ns/sosa/>.
+@prefix ssn: <http://www.w3.org/ns/ssn/>.
+
+@prefix pep: <https://w3id.org/pep/>.
+
+@base <https://ci.mines-stetienne.fr/pep-platform/>.
+
+
+<example> a foaf:Document ;
+  dc:title "Random number generator procedure execution container"@en ;
+  dc:description """This document describes the random number generator procedure execution container that is hosted on this website."""@en ;
+  dc:issued "2016-09-01"^^xsd:date ;
+  dc:modified "2016-09-01"^^xsd:date ;
+  dc:creator <http://www.maxime-lefrancois.info/me#> .
+
+<RandomNumberGenerator> a pep:ProcedureExecutor ;
+  rdfs:label "Random Number Generator" ;
+  rdfs:comment """This is a random number generator, a procedure executor.""" ;
+  ssn:implements <RandomNumberGenerationAlgorithm> ;
+  pep:implements <RandomNumberGenerationAlgorithm> ;
+  rdfs:isDefinedBy <example> .
+
+<RandomNumberGeneration> a pep:ProcedureExecutionContainer ;
+  rdfs:label "Random Number Generation" ;
+  rdfs:comment """This is the container for random number generations, a procedure execution container.""" ;
+  pep:forProcedure <RandomNumberGenerationAlgorithm> ;
+  pep:forExecutor <RandomNumberGenerator> ;
+  rdfs:isDefinedBy <example> .
+
+<RandomNumberGenerationAlgorithm> a pep:Procedure ;
+  rdfs:label "Random Number Generation Algorithm" ;
+  rdfs:comment """This is the algorithm used to randomly generate numbers, a procedure.""" ;
+  pep:hasInput <input> ;
+  ssn:hasInput <input> ;
+  pep:hasOutput <output> ;
+  ssn:hasOutput <output> ;
+  rdfs:isDefinedBy <example> .
+
+
+
+<input> a rdfp:GraphDescription ;
+  rdfs:label "input graph" ;
+  rdfs:comment """This is the Random Number Generation Algorithm input graph description.""" ;
+  rdfs:comment "The commands contains the min and max for each number to be randomly generated."@en ;
+  rdfp:validationRule <input/validation> ;
+  rdfp:presentedBy <input/xml> ;
+  rdfp:presentedBy <input/json> ;
+  rdfs:isDefinedBy <example> .
+
+<input/xml> a rdfp:Presentation ;
+  rdfp:mediaType "application/xml" ; 
+  rdfp:liftingRule <input/xml/liftingRule> ;
+  rdfp:loweringRule <input/xml/loweringRule> ;
+  rdfs:isDefinedBy <example> .
+
+<input/json> a rdfp:Presentation ;
+  rdfp:mediaType "application/json" ; 
+  rdfp:liftingRule <input/json/liftingRule> ;
+  rdfp:loweringRule <input/json/loweringRule> ;
+  rdfs:isDefinedBy <example> .
+
+
+
+<output> a rdfp:GraphDescription ;
+  rdfs:comment """This is the Random Number Generation Algorithm output graph description.""" ;
+  rdfs:comment "The results contain the randomly generated numbers."@en ;
+  rdfp:validationRule <output/validation> ;
+  rdfp:presentedBy <output/xml> ;
+  rdfp:presentedBy <output/json> ;
+  rdfs:isDefinedBy <example> .
+
+<output/xml> a rdfp:Presentation ;
+  rdfp:mediaType "application/xml" ; 
+  rdfp:liftingRule <output/xml/liftingRule> ;
+  rdfp:loweringRule <output/xml/loweringRule> ;
+  rdfs:isDefinedBy <example> .
+
+<output/json> a rdfp:Presentation ;
+  rdfp:mediaType "application/json" ; 
+  rdfp:liftingRule <output/json/liftingRule> ;
+  rdfp:loweringRule <output/json/loweringRule> ;
+  rdfs:isDefinedBy <example> .

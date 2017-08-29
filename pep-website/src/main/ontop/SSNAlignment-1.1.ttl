@@ -37,28 +37,27 @@ pep:SSNAlignment a owl:Ontology , voaf:Vocabulary , foaf:Document ;
   vann:preferredNamespacePrefix "pep" ;
   vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
   owl:imports pep:, ssn: ;
-  owl:versionIRI <SSNAlignment-0.9> ;
-  owl:versionInfo "v0.9" .
+  owl:versionIRI <SSNAlignment-1.1> ;
+  owl:versionInfo "v1.1" ;
+  owl:priorVersion <SSNAlignment-0.9> .
 
-pep:Process rdfs:subClassOf sosa:Procedure .
+pep:Procedure rdfs:subClassOf sosa:Procedure .
 
-sosa:Sensor rdfs:subClassOf pep:ProcessExecutor .
-sosa:Actuator rdfs:subClassOf pep:ProcessExecutor .
+sosa:Sensor rdfs:subClassOf pep:ProcedureExecutor .
+sosa:Actuator rdfs:subClassOf pep:ProcedureExecutor .
 
-sosa:Observation rdfs:subClassOf pep:ProcessExecution .
-sosa:Actuation rdfs:subClassOf pep:ProcessExecution .
+sosa:Observation rdfs:subClassOf pep:ProcedureExecution .
+sosa:Actuation rdfs:subClassOf pep:ProcedureExecution .
 
-pep:ProcessExecutor rdfs:subClassOf sosa:FeatureOfInterest .
+pep:hasResult rdfs:subPropertyOf sosa:hasResult .
+pep:hasSimpleResult rdfs:subPropertyOf sosa:hasSimpleResult .
 
 pep:hasInput rdfs:subPropertyOf ssn:hasInput .
-ssn:hasInput a owl:ObjectProperty .
-
 pep:hasOutput rdfs:subPropertyOf ssn:hasOutput .
-ssn:hasOutput a owl:ObjectProperty .
 
 sosa:implements rdfs:subPropertyOf pep:implements .
 
-sosa:madeBySensor rdfs:subPropertyOf pep:executedBy .
-sosa:madeByActuator rdfs:subPropertyOf pep:executedBy .
+sosa:madeBySensor rdfs:subPropertyOf pep:madeBy .
+sosa:madeByActuator rdfs:subPropertyOf pep:madeBy .
 
-sosa:usedProcedure rdfs:subPropertyOf pep:methodUsed .
+sosa:usedProcedure rdfs:subPropertyOf pep:usedProcedure .

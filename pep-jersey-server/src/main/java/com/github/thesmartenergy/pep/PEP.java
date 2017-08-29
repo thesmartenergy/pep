@@ -30,15 +30,19 @@ public class PEP {
     
     public static final Property hasInput = ResourceFactory.createProperty(NS + "hasInput");
     
+    public static final Property hasCommand = ResourceFactory.createProperty(NS + "hasCommand");
+    
     public static final Property hasOutput = ResourceFactory.createProperty(NS + "hasOutput");
     
-    public static final Property methodUsed = ResourceFactory.createProperty(NS + "methodUsed");
+    public static final Property hasResult = ResourceFactory.createProperty(NS + "hasResult");
+    
+    public static final Property usedProcedure = ResourceFactory.createProperty(NS + "usedProcedure");
 
-    public static final Property forProcess = ResourceFactory.createProperty(NS + "forProcess");
+    public static final Property forProcedure = ResourceFactory.createProperty(NS + "forProcedure");
     
-    public static final Resource ProcessExecution = ResourceFactory.createResource(NS + "ProcessExecution");
+    public static final Resource ProcedureExecution = ResourceFactory.createResource(NS + "ProcedureExecution");
     
-    public static final Resource ProcessExecutionContainer = ResourceFactory.createResource(NS + "ProcessExecutionContainer");
+    public static final Resource ProcedureExecutionContainer = ResourceFactory.createResource(NS + "ProcedureExecutionContainer");
     
     public static final Property generatedBy = ResourceFactory.createProperty(NS + "generatedBy");
 

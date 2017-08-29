@@ -16,30 +16,5 @@
 @prefix ontop: <https://w3id.org/ontop/>.
 @base <https://w3id.org/pep/>.
 
-<> a ontop:Ontology ; ontop:filePath "pep-1.0.ttl" .
-
-<> a ontop:Ontology ; ontop:filePath "RDFPAlignment-0.9.ttl" .
-
-<> a ontop:Ontology ; ontop:filePath "SSNAlignment-0.9.ttl" .
-
-<example> a rdfp:Graph ; ontop:filePath "example-description.ttl" .
-
-<input/xml/liftingRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "inputGraph-xml-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
-<input/xml/loweringRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "inputGraph-xml-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
-<input/json/liftingRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "inputGraph-json-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
-<input/json/loweringRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "inputGraph-json-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
-
-<output/xml/liftingRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "outputGraph-xml-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
-<output/xml/loweringRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "outputGraph-xml-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
-<output/json/liftingRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "outputGraph-json-liftingRule.rqg" ;  rdfp:mediaType "application/vnd.sparql-generate" ] .
-<output/json/loweringRule> a rdfp:Resource ; rdfp:representedBy [ ontop:filePath "outputGraph-json-loweringRule.rul" ;  rdfp:mediaType "application/vnd.corese-rules" ] .
-
-<input/example> a rdfp:Resource ; 
-  rdfp:representedBy [ ontop:filePath "input-example.json" ;  rdfp:mediaType "application/json" ] ;
-  rdfp:representedBy [ ontop:filePath "input-example.ttl" ;  rdfp:mediaType "text/turtle" ] ;
-  rdfp:representedBy [ ontop:filePath "input-example.xml" ;  rdfp:mediaType "application/xml" ] .
-
-<output/example> a rdfp:Resource ; 
-  rdfp:representedBy [ ontop:filePath "output-example.json" ;  rdfp:mediaType "application/json" ] ;
-  rdfp:representedBy [ ontop:filePath "output-example.ttl" ;  rdfp:mediaType "text/turtle" ] ;
-  rdfp:representedBy [ ontop:filePath "output-example.xml" ;  rdfp:mediaType "application/xml" ] .
+[] a ontop:OntologySet ;
+  ontop:fileSelector "(.+\\\\)?[A-Za-z]+-[0-9]+\\.[0-9]+\\.ttl" .

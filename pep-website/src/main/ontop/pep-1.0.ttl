@@ -16,12 +16,11 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix cc: <http://creativecommons.org/ns#>.
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix rdfp: <https://w3id.org/rdfp/>.
@@ -31,8 +30,8 @@
 @base <https://w3id.org/pep/>.
 
 pep: a owl:Ontology , voaf:Vocabulary , foaf:Document ;
-  dc:title "Process Execution ontology."@en ;
-  dc:description """The process execution ontology is a proposal for a simple extension of both the [W3C Semantic Sensor Network](https://www.w3.org/TR/vocab-ssn/) and the [Semantic Actuator Network](https://www.irit.fr/recherches/MELODI/ontologies/SAN.owl) ontology cores. 
+  dcterms:title "Process Execution ontology."@en ;
+  dcterms:description """The process execution ontology is a proposal for a simple extension of both the [W3C Semantic Sensor Network](https://www.w3.org/TR/vocab-ssn/) and the [Semantic Actuator Network](https://www.irit.fr/recherches/MELODI/ontologies/SAN.owl) ontology cores. 
 
 SSN describe `ssn:Sensor`s that implement `ssn:Sensing` methods and generate `ssn:Observation`s, which are (soon to be) activities.
 
@@ -62,10 +61,10 @@ Additional documents describe alignments with other existing ontologies:
 [Process execution platforms](https://w3id.org/pep/platform.html) expose process executors on the Web in a RESTful way.
 
 """@en ;
-  dc:issued "2016-07-01"^^xsd:date ;
-  dc:modified "2016-09-12"^^xsd:date ;
-  dc:creator <http://www.maxime-lefrancois.info/me#> ;
-  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+  dcterms:issued "2016-07-01"^^xsd:date ;
+  dcterms:modified "2016-09-12"^^xsd:date ;
+  dcterms:creator <http://www.maxime-lefrancois.info/me#> ;
+  dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   vann:preferredNamespacePrefix "pep" ;
   vann:preferredNamespaceUri <https://w3id.org/pep/> ;  
   owl:versionIRI <pep-1.0> ;
