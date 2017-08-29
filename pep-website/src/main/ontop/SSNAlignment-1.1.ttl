@@ -45,9 +45,11 @@ pep:Procedure rdfs:subClassOf sosa:Procedure .
 
 sosa:Sensor rdfs:subClassOf pep:ProcedureExecutor .
 sosa:Actuator rdfs:subClassOf pep:ProcedureExecutor .
+sosa:Sampler rdfs:subClassOf pep:ProcedureExecutor .
 
 sosa:Observation rdfs:subClassOf pep:ProcedureExecution .
 sosa:Actuation rdfs:subClassOf pep:ProcedureExecution .
+sosa:Sampling rdfs:subClassOf pep:ProcedureExecution .
 
 pep:hasResult rdfs:subPropertyOf sosa:hasResult .
 pep:hasSimpleResult rdfs:subPropertyOf sosa:hasSimpleResult .
@@ -59,5 +61,6 @@ sosa:implements rdfs:subPropertyOf pep:implements .
 
 sosa:madeBySensor rdfs:subPropertyOf pep:madeBy .
 sosa:madeByActuator rdfs:subPropertyOf pep:madeBy .
+sosa:madeBySampler rdfs:subPropertyOf pep:madeBy .
 
 sosa:usedProcedure rdfs:subPropertyOf pep:usedProcedure .
